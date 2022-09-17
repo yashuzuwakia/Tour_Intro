@@ -1,10 +1,24 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
+import Tours from './Tours';
+import Loading from './Loading';
+
 import "./style.css";
 
 export default function App() {
+
+  const [loading,setLoading] = useState(true);
+  const [tours,setTours] = useState([]);
+  if(loading){
   return (
-    <div>
-      <h1>Tour Project Setup</h1>
-    </div>
+    <main>
+      <Loading/>
+    </main>
   );
+}
+return (
+  <main>
+    <Tours/>
+  </main>
+)
+
 }
