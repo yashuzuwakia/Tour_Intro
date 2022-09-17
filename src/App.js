@@ -22,9 +22,12 @@ export default function App() {
     } catch (error) {
         setLoading(false);
     }
-    
-    console.log(tours);
-   }
+    }
+
+    const removeTour = (id) => {
+      const newTours = tours.filter((tour)=>tour.id!==id);
+      setTours(newTours);
+    } 
 
    useEffect(()=>{
       fetchTours();
@@ -37,9 +40,16 @@ export default function App() {
     </main>
   );
 }
+if(tours.length===0){
+  return (
+    <main>
+      <h2>No tours Left</h2>
+    </main>
+  );
+}
 return (
   <main>
-    <Tours/>
+    <Tours tours={tours} removeTour={removeTour} />
   </main>
 )
 
